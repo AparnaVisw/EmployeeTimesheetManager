@@ -1,0 +1,36 @@
+<div id = "timesheets">
+<table id="timesheet" cellspacing="0">
+<thead>
+<tr>
+<th> Project's name <th>
+<th> <%= 4.day.ago %> </th>
+<th> <%= 3.day.ago %> </th>
+<th> <%= 2.day.ago %> </th>
+<th> <%= Date.yesterday %> </th>
+<th> <%= Date.today %> </th>
+<th> Total </th>
+<th> </th>
+<th colspan="15"></th>
+</tr>
+</thead>
+</tr>
+<tr>
+<td id="def_timesheet_val"> Project1</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td> <%= link_to "EDIT TIMESHEETS", timesheets_edit_path(id: params[:id]), class: "small button"%></td>
+</tr>
+<tr>
+<td id="def_timesheet_val"> Project2</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+<td id ="def_timesheet_val"> 0.0</td>
+</tr>
+</div>

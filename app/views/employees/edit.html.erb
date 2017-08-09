@@ -1,0 +1,17 @@
+<%= form_for @user , :as => :user, :url => employees_update_path(@user), :method => :PUT do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br>
+
+  <%= f.label :empid %>:
+  <%= f.text_field :empid %><br>
+
+  <%= f.label :dob %>:
+  <%= f.number_field :dob %><br>
+
+  <%= f.label :address %>:
+  <%= f.text_field :address %><br>
+
+  <%= f.submit :class => 'small button' %>
+<% end %>
+<%= link_to 'HOME', root_path,  method: :get, class: "small button" %>
+

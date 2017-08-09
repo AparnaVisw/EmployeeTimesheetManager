@@ -1,0 +1,16 @@
+
+  <table id="employees" cellspacing="10">
+  <thead>
+    <tr>
+      <th>        NAME        </th>
+      <th>        Show Profile </th>
+      <th>        Manage Timesheet</th>de
+      <th colspan="15"></th>n
+  </thead>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= link_to 'Show Profile', employees_show_path(id: user.id), class: "small button"%></td>
+    <td><%= link_to 'Manage Timesheet', timesheets_new_path(id: user.id),class: "small button"%></td>
+  </tr>
+<% end %>
