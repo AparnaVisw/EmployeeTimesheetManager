@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'employees/:id/edit', to: 'employees#edit' , as: :employees_edit
   put 'employees/:id', to: 'employees#update', as: :employees_update
   get 'timesheets/new'
+  post 'timesheets/create'
+  patch 'timesheets/update'
+  get 'timesheets/index'
   get 'timesheets/show'
-  get 'timesheets/:id/edit', to: 'timesheets#edit' , as: :timesheets_edit
-  put 'timesheets/:id', to: 'timesheets#update', as: :timesheets_update
+  get 'timesheets/edit'
 end

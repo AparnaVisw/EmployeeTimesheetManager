@@ -1,16 +1,22 @@
 class TimesheetsController < ApplicationController
 
+  before_action :set_values, only: [:new]
+
 def new
-   Timesheet.new
+  debugger
+  @timesheet = Timesheet.new
 end
 
 def create
-  @timesheets = Timesheet.save(timesheet_params)
+  debugger
+  @timesheets = Timesheet.new(timesheet_params)
   if @timesheets.save
-    redirect_to @timesheets
-  else
-    render "new"
-  end
+    debugger
+         redirect_to :action => 'show'
+      else
+        debugger
+         render :action => 'new'
+      end
 end
 
 def index
@@ -35,13 +41,23 @@ def edit
 end
 
 def update
+   @timesheet = Timesheet.find(params[:id])
+      if @timesheet.update_attributes(timesheet_params)
+         redirect_to :action => 'show', :id => @timesheet
+      else
+         render :action => 'edit'
+      end
 end
 
-def delete
-end
 
 def timesheet_params
 	params.require(:timesheet).permit(:timespend,:employee_id,:project_id,:dates)
 end
+
+def set_values
+  @projects = Project.all
+  $total_projects = Project.all.count
+end
+
 
 end

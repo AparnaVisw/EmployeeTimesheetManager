@@ -1,36 +1,36 @@
+
+<h1>Add new timesheets</h1>
+
+
+<% form_for( @timesheet) do |form| %>
 <div id = "timesheets">
 <table id="timesheet" cellspacing="0">
 <thead>
 <tr>
 <th> Project's name <th>
-<th> <%= 4.day.ago %> </th>
-<th> <%= 3.day.ago %> </th>
-<th> <%= 2.day.ago %> </th>
-<th> <%= Date.yesterday %> </th>
-<th> <%= Date.today %> </th>
+<th> <%= 4.day.ago.to_date %> </th>
+<th> <%= 3.day.ago.to_date %> </th>
+<th> <%= 2.day.ago.to_date %> </th>
+<th> <%= Date.yesterday.to_date %> </th>
+<th> <%= Date.today.to_date %> </th>
 <th> Total </th>
 <th> </th>
 <th colspan="15"></th>
 </tr>
 </thead>
 </tr>
+<% debugger %>
+<%= for g in (0..($total_projects-1)) do %>
 <tr>
-<td id="def_timesheet_val"> Project1</td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
+<td id="def_project_val"> <%= @projects[g].project_name %></td>
+<td id ="def_timesheet_val"><%= form.label :project_name %><%= form.text_field :project_name %></td>
+<td id ="def_timesheet_val">i  <%= number_field(:timesheet, :timespend, in: 1.0..12.0, step: 0.1) %></td>
+<td id ="def_timesheet_val"> <%= number_field(:timesheet, :timespend, in: 1.0..12.0, step: 0.1) %></td>
+<td id ="def_timesheet_val"> <%= number_field(:timesheet, :timespend, in: 1.0..12.0, step: 0.1) %></td>
+<td id ="def_timesheet_val"> <%= number_field(:timesheet, :timespend, in: 1.0..12.0, step: 0.1) %></td>
+<td id ="def_timesheet_val"><%= number_field(:timesheet, :timespend, in: 1.0..12.0, step: 0.1) %></td>
 </tr>
-<tr>
-<td id="def_timesheet_val"> Project2</td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-<td id ="def_timesheet_val"> <input type="time" name="usr_time"></td>
-</tr>
-<td><%= link_to 'SUBMIT TIMESHEET', timesheets_new_path,class: "small button"%></td>
+<% end %>
+<%= submit_tag "Create" %>
+<% end %>
 </div>
