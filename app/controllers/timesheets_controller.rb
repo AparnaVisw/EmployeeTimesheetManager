@@ -1,10 +1,14 @@
 class TimesheetsController < ApplicationController
-
   before_action :set_values, only: [:new]
 
 def new
   debugger
+  @projects = Project.all
+  @dates = [ 4.day.ago.to_date,3.day.ago.to_date,2.day.ago.to_date,1.day.ago.to_date,Date.today.to_date]
   @timesheet = Timesheet.new
+   respond_to do |format|
+    format.html
+   end
 end
 
 def create
@@ -56,7 +60,8 @@ end
 
 def set_values
   @projects = Project.all
-  $total_projects = Project.all.count
+  @dates = [ 4.day.ago.to_date,3.day.ago.to_date,2.day.ago.to_date,1.day.ago.to_date,Date.today.to_date]
+  # $total_projects = Project.all.count
 end
 
 
