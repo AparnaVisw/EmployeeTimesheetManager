@@ -10,7 +10,7 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
-    <td><%= link_to 'Show Profile', employees_show_path(id: user.id), class: "small button"%></td>
-    <td><%= link_to 'New Timesheet', timesheets_new_path(id: user.id),class: "small button"%></td>
+    <td><%= link_to 'Show Profile', employees_show_path(id: user.id),class: "btn btn-default"%></td>
+    <td><%= link_to 'New Timesheet', timesheets_new_path(id: user.id),class: "btn btn-default"%></td>
   </tr>
 <% end %>

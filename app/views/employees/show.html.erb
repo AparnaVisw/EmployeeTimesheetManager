@@ -18,5 +18,5 @@
     <td> <%= @employee.address %> </td>
   </tr>
 </table>
- <%= link_to '  Edit  ', employees_edit_path(id: @employee.id) , class: "small button"%>
-<%= link_to 'HOME', root_path,  method: :get, class: "small button" %>
+ <%= link_to '  Edit  ', employees_edit_path(id: @employee.id) , class: "btn btn-default"%>
+<%= link_to 'HOME', root_path,  method: :get, class: "btn btn-default" %>
