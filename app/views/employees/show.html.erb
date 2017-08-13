@@ -1,22 +1,33 @@
-<% debugger %>
-<br>
-<br>
+<div class="container">
+<%= form_tag do %>
+<div style="text-align:center">
 <h3>User details</h3>
-<table id="albums" cellspacing="0">
-  <thead>
+</div>
+<table id="albums" class="table table-bordered table-striped table-sm" cellspacing="10">
+<div class="form-group">
+  <thead class="thead-inverse">
     <tr>
-      <th>Name</th>
-      <th>Employee ID</th>
-      <th>Date Of Birth</th>
-      <th>Address</th>
+      <th>NAME</th>
+      <th>EMPLOYEE ID</th>
+      <th>DATE OF BIRTH</th>
+      <th>ADDRESS</th>
     </tr>
   </thead>
+  </div>
+<div class="form-group">
+  <thead class="thead-inverse">
   <tr>
     <td> <%= @employee.name %> </td>
     <td> <%= @employee.empid %> </td>
     <td> <%= @employee.dob %> </td>
     <td> <%= @employee.address %> </td>
   </tr>
+</thead>
+</div>
 </table>
- <%= link_to '  Edit  ', employees_edit_path(id: @employee.id) , class: "btn btn-default"%>
-<%= link_to 'HOME', root_path,  method: :get, class: "btn btn-default" %>
+<div style="text-align:center">
+ <%= link_to '  EDIT  ', employees_edit_path(id: @employee.id) , class: "btn btn-primary"%>
+<%= link_to 'HOME', root_path,  method: :get, class: "btn btn-primary" %>
+</div>
+</div>
+<%end%>

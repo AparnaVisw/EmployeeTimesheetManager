@@ -1,0 +1,39 @@
+
+<div class="container">
+  <%= form_tag do %>
+    <div style="text-align:center">
+        <p>All timesheets</p>
+    </div>
+
+  <div id = "timesheets">
+    <table id="timesheet" class="table table-bordered table-striped table-sm" cellspacing="10">
+      <div class="form-group">
+      <thead class="thead-inverse">
+      <tr>
+          <th> Project's name </th>
+          <th> <%= (4.day.ago).to_date%> </th>
+          <th> <%= (3.day.ago).to_date %> </th>
+          <th> <%= (2.day.ago).to_date %> </th>
+          <th> <%= (Date.yesterday).to_date %> </th>
+          <th> <%= (Date.today).to_date %> </th>
+          <th> Total </th>
+      </tr>
+      </thead>
+      </div>
+       <div class="form-group">
+      <tr>
+          <td id ="def_timesheet_val"> </td>
+          <td id ="four_days_b4">        </td>
+          <td id ="three_days_b4">        </td>
+          <td id ="two_days_b4">        </td>
+          <td id ="one_day_b4">        </td>
+          <td id ="today">        </td>
+          <td id ="total_calculated">        </td>
+      </tr>
+      </div>
+      </div>
+    </table>
+  </div>
+
+  <% end %>
+</div>

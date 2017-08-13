@@ -1,16 +1,23 @@
-<% debugger %>
-  <table id="employees" cellspacing="10">
-  <thead>
+<div class="container">
+<%= form_tag do %>
+  <table class="table table-bordered table-striped table-sm" cellspacing="10">
+  <div class="form-group">
+  <thead class="thead-inverse">
     <tr>
-      <th>        NAME        </th>
-      <th>        Show Profile </th>
-      <th>        Manage Timesheet</th>de
-      <th colspan="15"></th>n
+      <th>NAME</th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
+  </div>
 <% @users.each do |user| %>
+<div class="form-group">
   <tr>
     <td><%= user.name %></td>
-    <td><%= link_to 'Show Profile', employees_show_path(id: user.id),class: "btn btn-default"%></td>
-    <td><%= link_to 'New Timesheet', timesheets_new_path(id: user.id),class: "btn btn-default"%></td>
+    <td><%= link_to 'SHOW PROFILE', employees_show_path(id: user.id),class: "btn btn-primary btn-default active"%></td>
+    <td><%= link_to 'NEW TIMESHEET', timesheets_new_path(id: user.id),class: "btn btn-primary btn-default active"%></td>
   </tr>
+  </div>
 <% end %>
+<% end %>
+</div>

@@ -2,3 +2,9 @@
         text-align: center;
         display: block;
     }
+
+.form {
+    display: inline-block;
+    text-align: center;
+    }
+
