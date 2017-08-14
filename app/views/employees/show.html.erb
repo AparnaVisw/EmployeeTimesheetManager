@@ -1,5 +1,9 @@
+
 <div class="container">
 <%= form_tag do %>
+<div style="text-align:center" id="photo">
+<%= image_tag(@employee.image.url) if @employee.image_stored? %>
+</div>
 <div style="text-align:center">
 <h3>User details</h3>
 </div>

@@ -6,7 +6,6 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
       t.date :dob
       t.text :address
 
-      t.timestamps
     end
   end
 end

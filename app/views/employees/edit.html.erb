@@ -2,7 +2,7 @@
 <%= form_for @user , class: "form-horizontal" , :as => :user, :url => employees_update_path(@user), :method => :PUT do |f| %>
 
 <div style="text-align:center">
-        <p> Edit Timesheet </p>
+        <p> Edit User Details</p>
 </div>
 
 <div class="form-group">
@@ -32,6 +32,13 @@
   <%= f.text_field :address , :class => "form-control"%><br>
   </div>
 </div>
+
+<div class="form-group">
+    <%= f.label :image, :class => "col-sm-2 control-label" %>
+    <div class = "col-sm-10">
+    <%= f.file_field :image %>
+    </div>
+  </div>
 
 <div style="text-align:center">
   <%= f.submit 'SAVE' , class: "btn btn-primary btn-default active"  %>
