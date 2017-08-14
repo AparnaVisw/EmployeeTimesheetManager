@@ -5,11 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-today = Time.now.strftime("%m/%d/%Y").to_date
-yesterday =1.day.ago.to_date
-day_b4_yest = 2.days.ago.to_date
-ere_yest = 3.days.ago.to_date
-day_b4_ere_yest = 4. days.ago.to_date
 
 if Employee.find_by(:empid => 100).nil?
    Employee.create(empid: 100, name: "John Doe", dob: DateTime.new(1990, 6, 22),address: "ABC street,New york")

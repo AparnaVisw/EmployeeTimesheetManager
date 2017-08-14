@@ -46,7 +46,7 @@
 </div>
 
 <div class = "form-group">
-<div style="text-align:center">
+<div style="text-align:left">
  <%= submit_tag("SAVE", :id=>"button", :class=>"submit", :name => "submit", class: "btn btn-primary") %>
  </div>
 </div>
@@ -58,8 +58,6 @@
 
 <div style="text-align:center">
  <%= link_to "EDIT EXISTING TIMESHEETS", timesheets_edit_path(id:  @user.id ), class: "btn btn-primary"%>
-
- <%= link_to 'HOME', root_path,  method: :get, class: "btn btn-primary" %>
 </div>
 
 

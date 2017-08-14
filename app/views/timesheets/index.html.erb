@@ -2,7 +2,7 @@
 <div class="container">
   <%= form_tag do %>
     <div style="text-align:center">
-        <p>All timesheets</p>
+        <h5>All timesheets for the past 5 days of <b><%= @employee %></h5> </p>
     </div>
 
   <div id = "timesheets">
@@ -15,25 +15,60 @@
           <th> <%= (3.day.ago).to_date %> </th>
           <th> <%= (2.day.ago).to_date %> </th>
           <th> <%= (Date.yesterday).to_date %> </th>
-          <th> <%= (Date.today).to_date %> </th>
-          <th> Total </th>
+          <th> <%= (Date.today).to_date %>,Today </th>
       </tr>
       </thead>
       </div>
        <div class="form-group">
+       <% @timesheets.each do |t| %>
       <tr>
-          <td id ="def_timesheet_val"> </td>
-          <td id ="four_days_b4">        </td>
-          <td id ="three_days_b4">        </td>
-          <td id ="two_days_b4">        </td>
-          <td id ="one_day_b4">        </td>
-          <td id ="today">        </td>
-          <td id ="total_calculated">        </td>
+          <td id ="def_project_name"> <%= if @all_projects[0][0] == t.project_id then @all_projects[0][1] else @all_projects[1][1] end %> </td>
+          <td id ="four_days_b4"><%= t.timespend if t.date_worked == (4.day.ago).to_date %> </td>
+          <td id ="three_days_b4"><%= t.timespend if t.date_worked == (3.day.ago).to_date %>  </td>
+          <td id ="two_days_b4"> <%= t.timespend if t.date_worked == (2.day.ago).to_date %> </td>
+          <td id ="one_day_b4"><%= t.timespend if t.date_worked == (Date.yesterday) %>  </td>
+          <td id ="today">  <%= t.timespend if t.date_worked == (Date.today) %>  </td>
       </tr>
       </div>
+      <% end %>
       </div>
     </table>
   </div>
-
   <% end %>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col-sm-6 form-group">
+        <form role="form" class="form-horizontal">
+           <p><u>Grand Total</u> Of hours worked on <b><%= (4.day.ago).to_date%></b> : <%= @total_hours_worked_4dayb4 %> </p>
+           <p><u>Grand Total</u> Ofhours worked on <b><%= (3.day.ago).to_date%></b> :<%= @total_hours_worked_3dayb4 %> </p>
+           <p><u>Grand Total</u> Of hours worked on <b><%= (2.day.ago).to_date%></b>: <%= @total_hours_worked_dayb4yest %> </p>
+           <p><u>Grand Total</u> Of hours worked on <b><%= (Date.yesterday) %> </b>:<%= @total_hours_worked_yest %></p>
+          <p><u>Grand Total</u> Of hours worked on <b><%= (Date.today) %></b> : <%= @total_hours_worked_today %></p>
+        </form>
+    </div>
+    <div class="col-sm-6 form-group">
+        <form role="form" class="form-horizontal">
+        <% @all_projects.each do |p| %>
+        <% if p[0] == params[:project_id].to_i %>
+          <p><u>Total hours</u> worked for the last 5 days in <b> <%= p[1] %></b> : <%= @total_hours_in_last_5_days_project %> </p>
+          <% else %>
+          <p><u>Total hours</u> worked for the last 5 days in <b> <%= p[1] %></b> : <%= @total_hours_in_last_5_days_4project_not_chosen %> </p>
+          <% end %>
+          <% end %>
+        </form>
+    </div>
+     <div class="col-sm-6 form-group">
+        <form role="form" class="form-horizontal">
+        <% @all_projects.each do |p| %>
+        <% if p[0] == params[:project_id].to_i %>
+          <p><u><b><%= @employee %></b></u>  had spend <u><b><%=@total_perc_in_last_5_days_project %> %</b></u> of his productive time in the last 5 days in <u><b> <%= p[1] %></b></u>  </p>
+          <% else %>
+          <p><u><b><%= @employee %></b></u>  had spend <u><b> <%= @total_perc_in_last_5_days_4project_not_chosen %> % </b></u> of his productive time in the last 5 days in <u><b> <%= p[1] %></b></u>  </p>
+          <% end %>
+          <% end %>
+        </form>
+    </div>
+</div>
 </div>
