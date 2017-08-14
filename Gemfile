@@ -61,3 +61,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dragonfly'
 
 gem 'jquery-rails'
+
+gem 'brakeman', require: false
+gem 'rails_best_practices', require: false
+gem 'rubocop', require: false
+gem 'rubycritic', require: false

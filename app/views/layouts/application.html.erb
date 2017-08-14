@@ -28,8 +28,13 @@
     </div>
   </div>
 </div>
-  <div class="container-fluid">
+  <div class="container-fluid bodyClass">
   <div class="row">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+     <%= msg %>
+    </div>
+  <% end %>
     <div class="span9">  <%= yield %>
     <div class="span3">
     </div>

@@ -30,6 +30,7 @@ class EmployeesController < ApplicationController
    end
    end
 
+  private
   def user_params
       params.require(:user).permit(:name, :empid, :dob, :address, :image)
   end
