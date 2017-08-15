@@ -1,3 +1,4 @@
+<% if @user != nil %>
 <div class="container">
 <h1>Add New Timesheets</h1>
 
@@ -41,7 +42,7 @@
 <div class = "form-group">
 <p> Description </p>
 <p>
-           <%= text_field(:timesheet, :description, class: "create_input") %>
+           <%= text_field(:timesheet, :description, class: "create_input required") %>
 </p>
 </div>
 
@@ -56,6 +57,6 @@
 <% end %>
 </div>
 
-
+<% end %>
 
 

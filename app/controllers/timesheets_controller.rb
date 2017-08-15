@@ -16,7 +16,7 @@ class TimesheetsController < ApplicationController
     if @timesheets.save
       redirect_to action: 'index', id: params[:timesheet][:employee_id], project_id: params[:timesheet][:project_id]
     else
-      flash.now[:error] = 'Invalid time. You cannot log for more than 8 hours for a day'
+      flash.now[:error] = 'Please fill in all the fields in such a way that you dont log for more than 8 hours per day'
       render action: 'new'
     end
   end
@@ -78,7 +78,7 @@ class TimesheetsController < ApplicationController
   def check_whether_exceeds_maximum_hours
     @timesheet_per_day = Timesheet.get_total_hours_on_a_date(params[:timesheet][:employee_id], params[:timesheet][:date_worked])
     unless @timesheet_per_day <= 8.00
-      flash[:alert] = 'Cant exceed more than 8'
+      flash[:alert] = 'Please fill in all the fields such that total logged hours cant exceed more than 8'
       redirect_to timesheets_new_path(id: params[:timesheet][:employee_id])
     end
   end
