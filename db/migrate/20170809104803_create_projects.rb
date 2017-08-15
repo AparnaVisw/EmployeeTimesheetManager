@@ -1,3 +1,4 @@
+# table structure for project details
 class CreateProjects < ActiveRecord::Migration[5.1]
   def change
     create_table :projects do |t|

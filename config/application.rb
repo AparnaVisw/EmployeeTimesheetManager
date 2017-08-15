@@ -1,3 +1,4 @@
+# default configuration file
 require_relative 'boot'
 
 require 'rails/all'
