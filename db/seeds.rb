@@ -6,22 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if Employee.find_by(:empid => 100).nil?
-   Employee.create(empid: 100, name: "John Doe", dob: DateTime.new(1990, 6, 22),address: "ABC street,New york")
+if Employee.find_by(empid: 100).nil?
+  Employee.create(empid: 100, name: 'John Doe', dob: DateTime.new(1990, 6, 22), address: 'ABC street,New york')
 end
 
-if Employee.find_by(:empid => 101).nil?
-   Employee.create(empid: 101, name: "Elsa Mary", dob: DateTime.new(1991, 9, 9),address: "XYZ street,New Jersey")
+if Employee.find_by(empid: 101).nil?
+  Employee.create(empid: 101, name: 'Elsa Mary', dob: DateTime.new(1991, 9, 9), address: 'XYZ street,New Jersey')
 end
 
-if Employee.find_by(:empid => 102).nil?
-   Employee.create(empid: 102, name: "MS Dhoni", dob: DateTime.new(1992, 7, 25),address: "FGI street,Russia")
+if Employee.find_by(empid: 102).nil?
+  Employee.create(empid: 102, name: 'MS Dhoni', dob: DateTime.new(1992, 7, 25), address: 'FGI street,Russia')
 end
 
-if Project.find_by(:project_name => "Project1").nil?
-   Project.create(project_name: "Project1", startdate: DateTime.new(2020, 6, 22), employee_id: 1)
+if Project.find_by(project_name: 'Project1').nil?
+  Project.create(project_name: 'Project1', startdate: DateTime.new(2020, 6, 22), employee_id: 1)
 end
 
-if Project.find_by(:project_name => "Project2").nil?
-   Project.create(project_name: "Project2", startdate: DateTime.new(2020, 6, 23), employee_id: 2)
+if Project.find_by(project_name: 'Project2').nil?
+  Project.create(project_name: 'Project2', startdate: DateTime.new(2020, 6, 23), employee_id: 2)
 end

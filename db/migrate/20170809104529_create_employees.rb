@@ -5,7 +5,6 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
       t.integer :empid
       t.date :dob
       t.text :address
-
     end
   end
 end

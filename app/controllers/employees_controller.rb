@@ -1,7 +1,6 @@
 class EmployeesController < ApplicationController
-
   def index
-    @users= Employee.all
+    @users = Employee.all
     respond_to do |format|
       format.html
     end
@@ -21,18 +20,18 @@ class EmployeesController < ApplicationController
     end
    end
 
-   def update
+  def update
     @user = Employee.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to :action => 'show', :id => @user
-   else
-      render :action => 'edit'
+      redirect_to action: 'show', id: @user
+    else
+      render action: 'edit'
    end
-   end
-
-  private
-  def user_params
-      params.require(:user).permit(:name, :empid, :dob, :address, :image)
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :empid, :dob, :address, :image)
+  end
 end
