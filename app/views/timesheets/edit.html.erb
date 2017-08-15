@@ -1,2 +1,65 @@
 
-<%= link_to 'HOME', root_path, method: :get, class: "small button" %>
+<%= form_tag({:controller => "timesheets", :action => "update"}, {:method => "put"}) do %>
+<div class = "form-group">
+<div id = "users">
+<p>You are filling in
+<input type="hidden" name="timesheet[employee_id]" value="<%= @user.id %>"><%= @user.name %>
+'s timesheet</p>
+</div>
+</div>
+
+<div class = "form-group">
+<p> SELECT PROJECT </p>
+<p>
+<select name="timesheet[project_id]">
+<% @projects.each do |obj| %>
+<% if @timesheet[0].project_id  == obj[:id] %>
+  <option value="<%= obj.id %>" selected="selected"> <%= obj[:project_name] %></option>
+  <% else %>
+  <option value="<%= obj[:id] %>"> <%= obj[:project_name] %>    </option>
+  <% end %>
+  <% end %>
+</select>
+</p>
+</div>
+
+<div class = "form-group">
+<p> SELECT DATE WORKED </p>
+<p>
+            <select disabled name="timesheet[date_worked]">
+                <option value="<%= @timesheet[0].date_worked%>" selected="selected"><%= @timesheet[0].date_worked %></option>
+            </select>
+</p>
+</div>
+
+
+<div class = "form-group">
+<p> SELECT TIME </p>
+<p>
+            <select name="timesheet[timespend]">
+                <% (0..8).step(0.25).each do |p| %>
+                <option value="<%= p %>" selected="selected"><%= p %></option>
+                <% end %>
+            </select>
+
+
+</p>
+</div>
+
+<div class = "form-group">
+<p> Description </p>
+<p>
+           <%= text_field(:timesheet, :description, class: "create_input",:value => @timesheet[0].description) %>
+</p>
+</div>
+
+<div class = "form-group">
+<div style="text-align:left">
+ <%= submit_tag("Update", :id=>"button", :class=>"submit", :name => "submit", class: "btn btn-primary") %>
+ </div>
+</div>
+
+
+</tr>
+<% end %>
+</div>

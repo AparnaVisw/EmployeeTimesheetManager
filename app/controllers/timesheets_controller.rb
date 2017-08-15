@@ -23,6 +23,7 @@ class TimesheetsController < ApplicationController
 
   def index
     @all_projects = Project.all.pluck(:id, :project_name)
+    @user = Employee.find(params[:id])
     @employee = Employee.where(id: params[:id].to_s).pluck(:name)[0]
     @timesheets = Timesheet.where(employee_id: params[:id].to_s)
     @total_hours_worked_today = Timesheet.get_total_hours_on_a_date(params[:id], Date.today)
@@ -50,7 +51,9 @@ class TimesheetsController < ApplicationController
   end
 
   def edit
-    @timesheet = Timesheet.where(employee_id: params[:id])
+    @timesheet = Timesheet.where(id: params[:timesheet_id])
+    @user = Employee.find(params[:id])
+    @projects = Project.all
     @timesheet_count = @timesheet.count
     respond_to do |format|
       format.html
@@ -60,7 +63,7 @@ class TimesheetsController < ApplicationController
   def update
     @timesheet = Timesheet.find(params[:id])
     if @timesheet.update_attributes(timesheet_params)
-      redirect_to action: 'show', id: @timesheet
+      redirect_to action: 'index', id: params[:timesheet][:employee_id], project_id: params[:timesheet][:project_id]
     else
       render action: 'edit'
     end
