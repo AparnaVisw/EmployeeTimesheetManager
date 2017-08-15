@@ -1,3 +1,4 @@
+# controller for employee details management
 class EmployeesController < ApplicationController
   def index
     @users = Employee.all

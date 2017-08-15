@@ -1,3 +1,4 @@
+# default file for active record configuration
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 end

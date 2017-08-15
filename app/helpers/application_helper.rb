@@ -1,3 +1,4 @@
+# flash message configurations
 module ApplicationHelper
   def flash_class(level)
     case level

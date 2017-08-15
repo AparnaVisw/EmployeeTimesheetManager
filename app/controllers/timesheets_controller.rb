@@ -1,3 +1,4 @@
+# controller for timesheet management
 class TimesheetsController < ApplicationController
   before_action :check_whether_exceeds_maximum_hours, only: %i[create update]
 

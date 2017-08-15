@@ -1,3 +1,4 @@
+# file upload configuration for profile picture upload using dragonfly
 require 'dragonfly'
 
 # Configure
