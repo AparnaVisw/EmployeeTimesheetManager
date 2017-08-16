@@ -71,7 +71,7 @@ class TimesheetsController < ApplicationController
 
   def check_whether_exceeds_maximum_hours
     @timesheet_per_day = Timesheet.get_total_hours_on_a_date(params[:timesheet][:employee_id], params[:timesheet][:date_worked])
-    unless @timesheet_per_day <= 8.00
+    unless  timesheet_params[:timespend].to_f + @timesheet_per_day <= 8.00
       flash[:alert] = 'Please fill in all the fields such that total logged hours cant exceed more than 8'
       redirect_to timesheets_new_path(id: params[:timesheet][:employee_id])
     end
