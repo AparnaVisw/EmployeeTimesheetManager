@@ -7,5 +7,4 @@ class ApplicationController < ActionController::Base
   def record_not_found
     render text: 'Sorry. The record you requested does not exists'
   end
-
 end

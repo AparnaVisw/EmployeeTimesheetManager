@@ -1,6 +1,6 @@
 # controller for timesheet management
 class TimesheetsController < ApplicationController
-  before_action :check_whether_exceeds_maximum_hours, only: [:create,:update]
+  before_action :check_whether_exceeds_maximum_hours, only: %i[create update]
 
   def new
     @user = Employee.find(params[:id])
@@ -69,12 +69,6 @@ class TimesheetsController < ApplicationController
     end
   end
 
-  private
-
-  def timesheet_params
-    params.require(:timesheet).permit(:timespend, :project_id, :date_worked, :employee_id, :description)
-  end
-
   def check_whether_exceeds_maximum_hours
     @timesheet_per_day = Timesheet.get_total_hours_on_a_date(params[:timesheet][:employee_id], params[:timesheet][:date_worked])
     unless @timesheet_per_day <= 8.00
@@ -82,4 +76,12 @@ class TimesheetsController < ApplicationController
       redirect_to timesheets_new_path(id: params[:timesheet][:employee_id])
     end
   end
+
+  private
+
+  def timesheet_params
+    params.require(:timesheet).permit(:timespend, :project_id, :date_worked, :employee_id, :description)
+  end
+
+
 end

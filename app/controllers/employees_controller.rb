@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.html
     end
-   end
+  end
 
   def update
     @user = Employee.find(params[:id])
