@@ -15,7 +15,7 @@ if Employee.find_by(empid: 101).nil?
 end
 
 if Employee.find_by(empid: 102).nil?
-  Employee.create(empid: 102, name: 'Smith', dob: Date.today, address: 'FGI street,Russia')
+  Employee.create(empid: 102, name: 'MS Dhoni', dob: Date.today, address: 'FGI street,Russia')
 end
 
 if Project.find_by(project_name: 'Project1').nil?

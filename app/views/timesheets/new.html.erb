@@ -35,7 +35,7 @@
 <div class = "form-group">
 <p> SELECT TIME </p>
 <p>
-           <%= select("timesheet", "timespend", (0..12).step(0.25).collect {|p| [ "#{p}", p ] }, { :include_blank => true }) %>
+           <%= select("timesheet", "timespend", (0..8).step(0.25).collect {|p| [ "#{p}", p ] }, { :include_blank => true }) %>
 </p>
 </div>
 

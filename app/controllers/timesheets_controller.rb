@@ -1,6 +1,6 @@
 # controller for timesheet management
 class TimesheetsController < ApplicationController
-  before_action :check_whether_exceeds_maximum_hours, only: %i[create update]
+  before_action :check_whether_exceeds_maximum_hours, only: [:create,:update]
 
   def new
     @user = Employee.find(params[:id])
@@ -24,8 +24,8 @@ class TimesheetsController < ApplicationController
   def index
     @all_projects = Project.all.pluck(:id, :project_name)
     @user = Employee.find(params[:id])
-    @employee = Employee.where(id: params[:id].to_s).pluck(:name)[0]
-    @timesheets = Timesheet.where(employee_id: params[:id].to_s)
+    @employee = Employee.get_employee_record( params[:id].to_s).pluck(:name)[0]
+    @timesheets = Timesheet.employee_timesheet(params[:id].to_s)
     @total_hours_worked_today = Timesheet.get_total_hours_on_a_date(params[:id], Date.today)
     @total_hours_worked_yest = Timesheet.get_total_hours_on_a_date(params[:id], Date.yesterday)
     @total_hours_worked_dayb4yest = Timesheet.get_total_hours_on_a_date(params[:id], 2.day.ago)
@@ -44,14 +44,14 @@ class TimesheetsController < ApplicationController
   end
 
   def show
-    @timesheet = Timesheet.where(employee_id: params[:id])
+    @timesheet = Timesheet.employee_timesheet(params[:id])
     respond_to do |format|
       format.html
     end
   end
 
   def edit
-    @timesheet = Timesheet.where(id: params[:timesheet_id])
+    @timesheet = Timesheet.get_timesheet_record(params[:timesheet_id])
     @user = Employee.find(params[:id])
     @projects = Project.all
     @timesheet_count = @timesheet.count
