@@ -17,14 +17,13 @@ class TimesheetsController < ApplicationController
       redirect_to action: 'index', id: params[:timesheet][:employee_id], project_id: params[:timesheet][:project_id]
     else
       flash.now[:error] = 'Please fill in all the fields in such a way that you dont log for more than 8 hours per day'
-      render action: 'new'
     end
   end
 
   def index
     @all_projects = Project.all.pluck(:id, :project_name)
     @user = Employee.find(params[:id])
-    @employee = Employee.get_employee_record( params[:id].to_s).pluck(:name)[0]
+    @employee = Employee.get_employee_record(params[:id].to_s).pluck(:name)[0]
     @timesheets = Timesheet.employee_timesheet(params[:id].to_s)
     @total_hours_worked_today = Timesheet.get_total_hours_on_a_date(params[:id], Date.today)
     @total_hours_worked_yest = Timesheet.get_total_hours_on_a_date(params[:id], Date.yesterday)
@@ -71,7 +70,7 @@ class TimesheetsController < ApplicationController
 
   def check_whether_exceeds_maximum_hours
     @timesheet_per_day = Timesheet.get_total_hours_on_a_date(params[:timesheet][:employee_id], params[:timesheet][:date_worked])
-    unless  timesheet_params[:timespend].to_f + @timesheet_per_day <= 8.00
+    unless timesheet_params[:timespend].to_f + @timesheet_per_day <= 8.00
       flash[:alert] = 'Please fill in all the fields such that total logged hours cant exceed more than 8'
       redirect_to timesheets_new_path(id: params[:timesheet][:employee_id])
     end
@@ -82,6 +81,4 @@ class TimesheetsController < ApplicationController
   def timesheet_params
     params.require(:timesheet).permit(:timespend, :project_id, :date_worked, :employee_id, :description)
   end
-
-
 end

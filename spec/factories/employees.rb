@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :employee do
-    timespend "MyString"
-    name "MyString"
+    name 'MyString'
     empid 1
-    dob "2017-08-16"
-    address "MyText"
+    dob '2017-08-16'
+    address 'MyText'
+    image_uid '2017/08/16/4mvkodn2iq_1.jpg'
+    image_thumb_uid '2017/08/16/4mvkodn2iq_1.jpg'
   end
 end
