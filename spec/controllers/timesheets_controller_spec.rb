@@ -39,5 +39,12 @@ RSpec.describe TimesheetsController, type: :controller do
       end
     end
   end
+
+  describe 'GET #index' do
+    context 'view a specifiic users records of timesheets' do
+      it 'shows existing timesheets' do
+      end
+    end
+  end
 end
 

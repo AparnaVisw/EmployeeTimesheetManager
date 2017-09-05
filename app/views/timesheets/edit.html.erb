@@ -38,11 +38,13 @@
 <p>
             <select name="timesheet[timespend]">
                 <% (0..8).step(0.25).each do |p| %>
-                <option value="<%= p %>" selected="selected"><%= p %></option>
+                  <% if p != @timesheet[0].timespend %>
+                    <option value="<%= p %>"><%= p %></option>
+                  <% else %>
+                    <option value="<%= p %>" selected><%= p %></option>
+                  <% end %>
                 <% end %>
             </select>
-
-
 </p>
 </div>
 
