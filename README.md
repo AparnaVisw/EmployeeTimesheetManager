@@ -7,6 +7,7 @@ ETM is an application that is intended to handle timesheet of employees in an or
 ## Limitations:
 
 Without creating a new timesheet,employees were not allowed to their existing timesheets. 
+Page displaying all timesheets and utilization details was difficult to understand for a new user
 Code was left without refactoring.
 Didnot follow Rails-best-practices/style guide.
 Lack of tests using rspec. 
