@@ -20,7 +20,7 @@ Rails [5.1.3]
 
 ## SetUp
 
-git clone https://github.com/AparnaVisw/ETM-Code-Improved-.git
+git clone https://github.com/AparnaVisw/EmployeeTimesheetManager.git
 
 cd ETM-Code-Improved-
 
